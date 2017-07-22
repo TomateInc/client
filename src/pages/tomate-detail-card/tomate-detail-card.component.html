@@ -1,0 +1,34 @@
+<ion-card *ngIf="tomate">
+	<ion-fab right top #fab>
+		<button ion-fab mini color="light"><ion-icon name="more"></ion-icon></button>
+		<ion-fab-list side="bottom">
+			<button ion-fab color="primary" (click)="rename(fab)"><ion-icon name="create"></ion-icon><div class="label">Rename</div></button>
+			<button ion-fab color="danger" (click)="remove(fab)"><ion-icon name="remove"></ion-icon><div class="label">Remove</div></button>
+		</ion-fab-list>
+	</ion-fab>
+
+	<ion-item>
+		<ion-card-title>{{tomate.name}}</ion-card-title>
+	</ion-item>
+
+	<ion-item>
+		<ion-label>Action</ion-label>
+		<ion-select [(ngModel)]="tomate.action" (ionChange)="actionChange()">
+			<ion-option *ngFor="let temp of templates" [value]="temp.name">{{temp.name}}</ion-option>
+		</ion-select>
+	</ion-item>
+	
+	<ion-card-content *ngIf="description">
+		<p>{{description}}</p>
+	</ion-card-content>
+	
+	<div *ngFor="let par of params">
+		<ion-item>
+			<ion-label floating>{{par.name}}</ion-label>
+			<ion-input type="text" [(ngModel)]="tomate.params[par.name]"></ion-input>
+		</ion-item>
+		<ion-card-content>
+			<p>{{par.desc}}</p>
+		</ion-card-content>
+	</div>
+</ion-card>

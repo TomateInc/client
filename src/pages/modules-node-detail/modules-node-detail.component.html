@@ -1,0 +1,45 @@
+<ion-header>
+	<ion-navbar>
+ 		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Node detail</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<div *ngIf="node">
+		<ion-list>
+			<ion-item>
+				<ion-label floating>Id</ion-label>
+				<ion-input type="text" readonly value="{{node.id}}"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>Value</ion-label>
+				<ion-input type="text" readonly={{!node.canSet}} [(ngModel)]="node.value"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label floating>ValueType</ion-label>
+				<ion-input type="text" readonly [(ngModel)]="node.valueType"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label>Can set</ion-label>
+				<ion-checkbox disabled [(ngModel)]="node.canSet"></ion-checkbox>
+			</ion-item>
+		</ion-list>
+			
+		<ion-grid>
+			<ion-row>
+				<ion-col *ngFor="let tomate of node.tomates" col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3>
+					<tomate-detail-card [tomate]="tomate" (onRemove)="removeTomate(tomate)"></tomate-detail-card>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</div>
+</ion-content>
+	
+<ion-footer>
+	<ion-fab right bottom>
+		<button ion-fab color="secondary" (click)="addTomate()"><ion-icon name="add"></ion-icon></button>
+	</ion-fab>
+</ion-footer>

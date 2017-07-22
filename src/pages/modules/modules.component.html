@@ -1,0 +1,32 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Tomate</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-grid>
+		<ion-row>
+			<ion-col *ngFor="let module of modules" col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3>
+				<ion-card>
+					<ion-card-content>
+						<ion-card-title>{{module.displayName}}</ion-card-title>
+					</ion-card-content>
+
+					<ion-item>
+						<ion-icon name='apps' item-start></ion-icon>
+						Nodes
+						<ion-badge item-end>{{module.nodes.length}}</ion-badge>
+					</ion-item>
+					
+					<button ion-button icon-left clear (click)="gotoDetail(module)">
+						<ion-icon name="more"></ion-icon><div>Details</div>
+					</button>
+				</ion-card>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>
