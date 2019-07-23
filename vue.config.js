@@ -4,4 +4,4 @@ module.exports = {
 		themeColor: '#ffffff',
 		msTileColor: '#df2c11',
 	},
-}
+};
