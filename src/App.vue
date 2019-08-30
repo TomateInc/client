@@ -28,7 +28,7 @@
 			<router-view />
 		</v-content>
 		<v-footer app fixed>
-			<span>&copy; 2017</span>
+			<span>&copy; 2019</span>
 		</v-footer>
 	</v-app>
 </template>
