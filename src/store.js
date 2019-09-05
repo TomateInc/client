@@ -31,5 +31,9 @@ export default new Vuex.Store({
 					}
 				);
 		},
+		// auto called by socket io
+		SOCKET_deviceChange(context) {
+			//TODO set changed device context
+		},
 	},
 });
