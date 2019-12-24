@@ -1,10 +1,8 @@
 <template>
 	<div>
 		<ul>
-			<li v-for="d in devices" :key="d._id">{{ d.name }}</li>
+			<Device v-for="d in devices" :key="d.id" :device="d"></Device>
 		</ul>
-
-		<Light></Light>
 
 		<HelloWorld />
 	</div>
@@ -13,13 +11,13 @@
 <script>
 import Vuex from 'vuex';
 import HelloWorld from '@/components/HelloWorld';
-import Light from '@/components/Light';
+import Device from '@/components/Device';
 import { mapMultiRowFields } from 'vuex-map-fields';
 
 export default {
 	components: {
 		HelloWorld,
-		Light,
+		Device,
 	},
 	computed: {
 		...mapMultiRowFields(['devices']),
