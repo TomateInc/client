@@ -8,7 +8,7 @@
 
 <script>
 export default {
-	name: 'Light',
+	name: 'Default',
 	props: {
 		id: {
 			type: String,
