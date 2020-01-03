@@ -13,18 +13,34 @@ export default {
 	},
 	computed: {
 		computedComponent() {
-			console.log(this.device);
-
-			return () => {
-				let comp = import('@/devices/' + this.device.config.type);
-				console.log('comp');
-				console.log(comp);
-				comp = import('@/devices/Light');
-				console.log(comp);
-				return comp;
-			};
+			return () => this.computeComponent();
 		},
 	},
-	methods: {},
+	methods: {
+		async computeComponent() {
+			let comp = null;
+			let err = true;
+			let devType = this.device.config.type;
+
+			while (err) {
+				try {
+					err = false;
+					comp = await import('@/devices/' + devType);
+				} catch {
+					err = true;
+
+					// jump one up in type
+					let n = devType.lastIndexOf('/');
+					if (n === -1) {
+						return import('@/devices/default');
+					} else {
+						devType = devType.substring(0, n);
+					}
+				}
+			}
+
+			return comp;
+		},
+	},
 };
 </script>
