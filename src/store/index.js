@@ -14,8 +14,11 @@ export default new Vuex.Store({
 	},
 	mutations: {
 		updateField,
-		SET_DEVICES(state, devices) {
-			state.devices = devices;
+		SET_DEVICES(state, device) {
+			state.devices = device;
+		},
+		ADD_DEVICE(state, device) {
+			state.devices.push(device);
 		},
 	},
 	actions: {
@@ -33,7 +36,7 @@ export default new Vuex.Store({
 		},
 		// auto called by socket io
 		SOCKET_deviceChange(context) {
-			//TODO set changed device context
+			// TODO set changed device context
 		},
 	},
 });

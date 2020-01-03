@@ -1,26 +1,27 @@
 <template>
 	<div>
-		<ul>
-			<Device v-for="d in devices" :key="d.id" :device="d"></Device>
-		</ul>
-
-		<HelloWorld />
+		<v-container fluid>
+			<v-row dense>
+				<v-col v-for="d in devices" :key="d.id" :cols="6">
+					<Device :device="d"></Device>
+				</v-col>
+			</v-row>
+		</v-container>
 	</div>
 </template>
 
 <script>
 import Vuex from 'vuex';
-import HelloWorld from '@/components/HelloWorld';
 import Device from '@/components/Device';
-import { mapMultiRowFields } from 'vuex-map-fields';
 
 export default {
 	components: {
-		HelloWorld,
 		Device,
 	},
 	computed: {
-		...mapMultiRowFields(['devices']),
+		devices() {
+			return this.$store.state.devices;
+		},
 	},
 	created() {
 		this.loadDevices();

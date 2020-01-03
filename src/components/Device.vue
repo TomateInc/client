@@ -1,5 +1,5 @@
 <template>
-	<component :is="componentName" v-bind="device" />
+	<component :is="computedComponent" v-bind="device" />
 </template>
 
 <script>
@@ -12,9 +12,17 @@ export default {
 		},
 	},
 	computed: {
-		componentName() {
-			//let componentExists = 'componentName' in this.$options.component
-			return 'Light';
+		computedComponent() {
+			console.log(this.device);
+
+			return () => {
+				let comp = import('@/devices/' + this.device.config.type);
+				console.log('comp');
+				console.log(comp);
+				comp = import('@/devices/Light');
+				console.log(comp);
+				return comp;
+			};
 		},
 	},
 	methods: {},
