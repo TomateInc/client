@@ -2,7 +2,7 @@
 	<div>
 		<v-container fluid>
 			<v-row dense>
-				<v-col v-for="d in devices" :key="d.id" :cols="6">
+				<v-col v-for="d in devices" :key="d.id" cols="12" md="6" lg="4" xl="3">
 					<Device :device="d"></Device>
 				</v-col>
 			</v-row>

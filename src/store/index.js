@@ -20,10 +20,18 @@ export default new Vuex.Store({
 		ADD_DEVICE(state, device) {
 			state.devices.push(device);
 		},
+		UPDATE_DEVICE_STATE(state, device) {
+			const dev = state.devices.find(d => d.id === device.id);
+			if (dev) {
+				dev.state = device.state;
+			} else {
+				state.devices.push(device);
+			}
+		},
 	},
 	actions: {
 		loadDevices(context) {
-			Api()
+			return Api()
 				.get('device/')
 				.then(
 					result => {
@@ -32,6 +40,16 @@ export default new Vuex.Store({
 					error => {
 						console.log(error);
 					}
+				);
+		},
+		callDeviceAction(context, { device, action, data }) {
+			return Api()
+				.post(`device/${device.id}/action/${action}`, data)
+				.then(
+					result => {
+						// calling an action results in an updated device info
+						context.commit('UPDATE_DEVICE_STATE', result.data);
+					},
 				);
 		},
 		// auto called by socket io
