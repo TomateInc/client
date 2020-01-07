@@ -4,8 +4,11 @@ import './registerServiceWorker';
 import router from './router';
 import store from './store';
 import vuetify from './plugins/vuetify';
+import configureEventSources from './eventsource';
 
 Vue.config.productionTip = false;
+
+configureEventSources();
 
 new Vue({
 	router,

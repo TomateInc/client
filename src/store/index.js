@@ -37,9 +37,6 @@ export default new Vuex.Store({
 					result => {
 						context.commit('SET_DEVICES', result.data);
 					},
-					error => {
-						console.log(error);
-					}
 				);
 		},
 		callDeviceAction(context, { device, action, data }) {
@@ -51,10 +48,6 @@ export default new Vuex.Store({
 						context.commit('UPDATE_DEVICE_STATE', result.data);
 					},
 				);
-		},
-		// auto called by socket io
-		SOCKET_deviceChange(context) {
-			// TODO set changed device context
 		},
 	},
 });
