@@ -42,12 +42,12 @@ export default new Vuex.Store({
 		callDeviceAction(context, { device, action, data }) {
 			return Api()
 				.post(`device/${device.id}/action/${action}`, data)
-				.then(
+				/* .then(
 					result => {
 						// calling an action results in an updated device info
 						context.commit('UPDATE_DEVICE_STATE', result.data);
 					},
-				);
+				) */;
 		},
 	},
 });
