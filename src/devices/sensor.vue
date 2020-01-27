@@ -30,7 +30,7 @@ export default {
 	computed: {
 		display() {
 			let d = this.state.value;
-			if (d.toPrecision) {
+			if (d && d.toPrecision) {
 				d = d.toFixed(1);
 			}
 
