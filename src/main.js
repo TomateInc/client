@@ -5,10 +5,13 @@ import router from './router';
 import store from './store';
 import vuetify from './plugins/vuetify';
 import configureEventSources from './eventsource';
+import { VueMasonryPlugin } from 'vue-masonry';
 
 Vue.config.productionTip = false;
 
 configureEventSources();
+
+Vue.use(VueMasonryPlugin);
 
 new Vue({
 	router,
