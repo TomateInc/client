@@ -28,7 +28,8 @@ export default {
 		this.loadDevices();
 	},
 	mounted() {
-		this.$redrawVueMasonry();
+		// workaround for masonry plugin not ordering the tiles on start
+		setTimeout(() => this.$redrawVueMasonry(), 1000);
 	},
 	methods: {
 		...Vuex.mapActions(['loadDevices']),
