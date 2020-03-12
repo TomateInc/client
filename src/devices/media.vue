@@ -4,7 +4,7 @@
 
 		<v-card-actions>
 			<v-btn class="mx-2" fab dark color="teal">
-				<v-icon dark>{{ state.speed ? 'mdi-play' : 'mdi-pause' }}</v-icon>
+				<v-icon dark>{{ state.speed ? 'mdi-pause' : 'mdi-play' }}</v-icon>
 			</v-btn>
 		</v-card-actions>
 	</v-card>
